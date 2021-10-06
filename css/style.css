@@ -1,0 +1,26 @@
+@media (min-width: 992px) {
+    #mainNav.navbar-light .navbar-collapse .navbar-sidenav {
+        background: #4435c55e;
+        background-image: url("http://localhost/onestop-kasir/logo/logo.png") !important;
+        /* background-color: #cccccc; */
+    }
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px !important;
+}
+
+canvas#myChart {
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+bold {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+body {
+    color: #444e42;
+}
