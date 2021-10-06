@@ -43,7 +43,6 @@
           $no = $hasil['No_Order'];
         }
 
-        session_start();
         $admin_id = $_SESSION['id'];
         $no_o = $no + 1;
         $i = 0 + 1;
