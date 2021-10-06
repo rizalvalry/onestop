@@ -46,7 +46,7 @@ if(isset($_SESSION['id'])){
       <td style="text-align: center;"><?php echo $i; ?></td>
       <td><?php echo $hasil['nama']; ?></td>
       <td><?php echo $hasil['email']; ?></td>
-      <td><?php echo $hasil['role_id'] == 2 ? "Kasir" : "Administrator"; ?></td>
+      <td><?php echo $hasil['role_id'] == 2 ? "Pegawai" : "Administrator"; ?></td>
 
       <td style="text-align: center;"><a data-toggle="modal" data-target="#ModalUserEdit<?php echo $hasil['id']; ?>" class="btn btn-warning">Edit</a>
       <a href="proses-user.php?hapus=<?php echo $hasil['id']; ?>"  class="btn btn-danger">Hapus</a></td>
@@ -83,7 +83,7 @@ if(isset($_SESSION['id'])){
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Role:</label>
-            <input type="text" class="form-control" id="role" value="<?php echo $hasil['role_id'] == 2 ? "Kasir" : "Administrator"; ?>" readonly>
+            <input type="text" class="form-control" id="role" value="<?php echo $hasil['role_id'] == 2 ? "Pegawai" : "Administrator"; ?>" readonly>
           </div>
           
           <div class="modal-footer">
