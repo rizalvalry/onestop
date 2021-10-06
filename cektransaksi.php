@@ -230,7 +230,44 @@ if(isset($_SESSION['id'])){
 
               </tbody>
               </table>
+            </div>
+
+            <?php 
+                $proses = mysqli_query($conn, "SELECT status, gambar, keterangan FROM transaksi where No_Order = $No_Order");
+                $kerja = mysqli_fetch_array($proses);
+
+                if($kerja['status'] == "baru") {
+            ?>
+            <form method="POST" action="proses-kerja.php" enctype="multipart/form-data">
+            <div class="form-group">
+              <label>Foto</label>
+              <input type="hidden" class="form-control" name="id" value="<?php echo $No_Order; ?>" id="id" disable="true" readonly>
+              <input type="file" name="gambar_kerja" class="form-control">
+                </div>
+              <div class="form-group">
+              <label>Keterangan</label>
+              <textarea class="form-control" name="keterangan"></textarea>
+                </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-secondary">Submit Pengerjaan</button>
               </div>
+                </form>
+
+                <?php } else { ?>
+                <div class="form-group">
+                  <label>Foto Item</label>
+                  <?php if($kerja['gambar'] == "") { 
+                      echo "tidak ada";  
+                      }
+                    ?>
+                  <img src="item/<?php echo $kerja['gambar'];?>" class="img-fluid" alt="<?php echo $kerja['gambar'];?>">
+                </div>
+                <div class="form-group">
+                  <label>Keterangan</label>
+                  <textarea class="form-control" readonly><?php echo $kerja['keterangan']; ?></textarea>
+                </div>
+                <?php } ?>
+
           </div>
         </div>
     </div>
