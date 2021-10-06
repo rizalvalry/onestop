@@ -5,9 +5,10 @@
   include "./include/koneksi.php";
   session_start();
   
-  $sql = mysqli_query($conn, "SELECT No_Order FROM detail_transaksi  ORDER BY No_Order Desc LIMIT 1");
-  $hasil = mysqli_fetch_array($sql);
-  $order = $hasil['No_Order'];
+  $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
+  while ($hasil = mysqli_fetch_array($sql)){
+    $order = $hasil['No_Order']+1;
+  }
   ?>
   <input type="hidden" class="form-control" name="no_order" value="<?= $hasil['No_Order']; ?>">
   <?php
@@ -37,21 +38,15 @@
     </thead>
     <tbody>
       <?php
-        $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
-        while ($hasil = mysqli_fetch_array($sql)){
-          $no = $hasil['No_Order'];
-        }
 
         $admin_id = $_SESSION['id'];
-        $no_o = $no + 1;
         $i = 0 + 1;
         $sql = mysqli_query($conn, " SELECT p.Jenis_Pakaian, l.Jenis_Laundry, dt.No_Order, dt.Id_Pakaian, dt.Jumlah_pakaian, dt.Id_Laundry, h.total_harga FROM detail_transaksi dt
                                       join pakaian p on dt.Id_Pakaian = p.Id_Pakaian
                                       join laundry l on dt.Id_Laundry = l.Id_Laundry
                                       join harga h on dt.Id_Pakaian = h.Id_Pakaian
-                                      Where dt.No_Order = $no_o AND h.Id_Laundry = 3 AND l.Jenis_Laundry = 'Dry Clean' AND dt.admin_id=$admin_id");
+                                      Where dt.No_Order = $order AND h.Id_Laundry = 3 AND l.Jenis_Laundry = 'Dry Clean' AND dt.admin_id=$admin_id");
         while ($hasil = mysqli_fetch_array($sql)) {
-          $no_order = $hasil['No_Order'];
       ?>
       <tr>
           <td style="text-align: center;"><?php echo $i; ?></td>
@@ -70,20 +65,9 @@
         }
       ?>
 
-      <?php  
-        // $cekjumlah = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 3 AND No_Order = $no_order");
-        // $hargalaundry = mysqli_fetch_array($cekjumlah);
-      ?>
-    </tbody>
+</tbody>
   </table>
 </div>
- 
-    <!-- <div class="form-group row" style="display:none;">
-  <div class="col-xs-2">
-    <label for="ex1">Sub Total Laundry</label>
-    <input type="text" name="hargalaundry" id="hargalaundry" value="<?= $hargalaundry['jumlah']; ?>" class="form-control" readonly="true">
-  </div> -->
-
 
 <script type="text/javascript">
     $(document).ready(function() {
