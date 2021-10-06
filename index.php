@@ -1,8 +1,6 @@
 
 <?php
         include "include/koneksi.php";
-
-        $id_session = $_SESSION['id'];
         $sql = mysqli_query($conn, "SELECT * FROM profil");
         $profil = mysqli_fetch_array($sql);
 
