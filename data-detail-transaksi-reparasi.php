@@ -43,7 +43,6 @@
           $no = $hasil['No_Order'];
         }
 
-        session_start();
         $admin_id = $_SESSION['id'];
         $no_o = $no + 1;
         $i = 0 + 1;
@@ -73,8 +72,8 @@
       ?>
 
       <?php  
-        $sql = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 4 AND No_Order = $no_order");
-        $hargareparasi = mysqli_fetch_array($sql);
+        // $sql = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 4 AND No_Order = $no_order");
+        // $hargareparasi = mysqli_fetch_array($sql);
       ?>
     </tbody>
   </table>

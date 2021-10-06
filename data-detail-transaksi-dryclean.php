@@ -71,8 +71,8 @@
       ?>
 
       <?php  
-        $sql = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 3 AND No_Order = $no_order");
-        $hargalaundry = mysqli_fetch_array($sql);
+        // $cekjumlah = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 3 AND No_Order = $no_order");
+        // $hargalaundry = mysqli_fetch_array($cekjumlah);
       ?>
     </tbody>
   </table>

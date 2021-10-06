@@ -73,8 +73,8 @@
       ?>
 
       <?php  
-        $sql = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 5 AND No_Order = $no_order");
-        $hargarecolor = mysqli_fetch_array($sql);
+        // $sql = mysqli_query($conn, "SELECT sum(Jumlah_pakaian) as jumlah FROM detail_transaksi where Id_Laundry = 5 AND No_Order = $no_order");
+        // $hargarecolor = mysqli_fetch_array($sql);
       ?>
     </tbody>
   </table>
