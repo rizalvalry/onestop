@@ -10,10 +10,11 @@ $laundry = mysqli_fetch_array($sql);
             <?php
             $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
             while ($hasil = mysqli_fetch_array($sql)){
+              $order = $hasil['No_Order'];
               ?>
                 <div class="form-group">
                   <label>No. Order</label>
-                  <input type="text" class="form-control" name="No_Order" value="<?php echo $hasil['No_Order']; ?>" readonly>
+                  <input type="text" class="form-control" name="No_Order" value="<?php echo $order; ?>" readonly>
                 </div>
                 <?php
                     }
@@ -36,14 +37,14 @@ $laundry = mysqli_fetch_array($sql);
                   <label>Total Berat / Item</label>
 
                   <?php
-                  $sql = mysqli_query($conn, "SELECT No_Order FROM detail_transaksi  ORDER BY No_Order Desc LIMIT 1");
-                  $hasil = mysqli_fetch_array($sql);
-                  $order = $hasil['No_Order'];
+                  // $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
+                  // $hasil = mysqli_fetch_array($sql);
+                  // $order = $hasil['No_Order'];
                   ?>
-                  <input type="hidden" class="form-control" name="no_order" value="<?= $hasil['No_Order']; ?>">
+                  <input type="hidden" class="form-control" name="no_order" value="<?= $order+1; ?>">
                   <?php
                   $admin_id = $_SESSION['id'];
-                  $sql = mysqli_query($conn, "SELECT * FROM harga  where no_order = '$order' AND Id_Laundry = 2 AND admin_id=$admin_id");
+                  $sql = mysqli_query($conn, "SELECT * FROM harga  where no_order = $order+1 AND Id_Laundry = 2 AND admin_id=$admin_id");
                   $hasil = mysqli_fetch_array($sql);
                   ?>
                   <input type="text" id="cucisetrika_total_berat" class="form-control" name="total_berat" onkeypress='validate(event)' placeholder="Total Berat" value="<?= $hasil['total_berat']; ?>">

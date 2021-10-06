@@ -1,6 +1,6 @@
 
 <?php
-        include "koneksi.php";
+        include "include/koneksi.php";
 
         $id_session = $_SESSION['id'];
         $sql = mysqli_query($conn, "SELECT * FROM profil");
@@ -11,10 +11,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title><?= $profil['nama_profil']; ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= $profil['nama_profil']; ?></title>
     <meta name="description" content="<?= $profil['tag']; ?>" />
     <meta name="keywords" content="<?= $profil['tag']; ?>" />
     <meta name="author" content="<?= $profil['tag']; ?>" />
