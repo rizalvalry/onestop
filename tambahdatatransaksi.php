@@ -183,7 +183,7 @@ if(isset($_SESSION['id'])){
                 <input type="hidden" class="form-control" name="Email" value="<?= $_SESSION['email']; ?>" readonly="true">
                 
                 <div class="form-group">
-                  <label>Nama Pelanggan</label>
+                  <label><span style="color:red">*</span> Nama Pelanggan</label>
                   <select class="form-control" name="No_Identitas">
                     <?php
                     $sql = mysqli_query($conn, "SELECT No_Identitas, Nama FROM pelanggan ORDER BY Nama");
@@ -207,14 +207,14 @@ if(isset($_SESSION['id'])){
                 </div>
 
               <div class="form-group">
-              <label>Kelas</label>
+              <label><span style="color:red">*</span> Kelas</label>
                 <select class="form-control" name="kelas" id="kelas">
                   <option value=""> Pilih Kelas</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label>Skala</label>
+                <label><span style="color:red">*</span> Skala</label>
                 <div id="dvskala">
                   <select class="form-control" name="skala" id="skala">
                     <option value=""></option>
@@ -247,7 +247,7 @@ if(isset($_SESSION['id'])){
                 </div>
 
                 <div class="form-group">
-                  <label>Metode Pembayaran</label>
+                  <label><span style="color:red">*</span> Metode Pembayaran</label>
                   <select class="form-control" name="payment" id="payment">
                     <option value="transfer">Transfer</option>
                     <option value="tunai">Tunai</option>
