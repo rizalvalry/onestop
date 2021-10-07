@@ -203,7 +203,7 @@ if(isset($_SESSION['id'])){
                     where No_Order = $na");
                     $total = mysqli_fetch_array($sql);
                   ?>
-                    <input type="text" id="total_berat" class="form-control" name="total_berat" placeholder="Total Berat" value="<?= $total['jumlah']; ?>">
+                    <input type="text" id="total_berat" class="form-control" name="total_berat" placeholder="Total Berat" value="<?= $total['jumlah']; ?>" readonly="true" />
                 </div>
 
               <div class="form-group">
@@ -223,19 +223,19 @@ if(isset($_SESSION['id'])){
               </div>
 
               <div class="form-group">
+                  <label>Diskon</label>
+                  <input pattern="[0-9.]+" type="number" id="diskon-item" class="form-control" name="diskon" />
+                </div>
+
+              <div class="form-group">
                 <label>Down Payment</label>
-                  <input pattern="[0-9.]+" type="number" name="dp" id="down-payment" class="form-control" />
+                <input pattern="[0-9.]+" type="number" name="dp" id="down-payment" class="form-control" />
               </div>
               
               <div class="form-group" id="kolomsisa" style="display:none;">
                 <label>Sisa Bayar</label>
                   <input id="numbers" type="number" name="sisa_bayar" class="form-control" readonly="true"/>
               </div>
-
-              <div class="form-group">
-                  <label>Diskon</label>
-                  <input type="text" id="diskon" class="form-control" name="diskon" placeholder="Diskon" value="0" >
-                </div>
 
               <div class="form-group">
                   <label>Total Bayar</label>
@@ -285,7 +285,18 @@ $(document).ready(function() {
       var total = totalakhir - uangdp;
       $("#numbers").val(total);
   });
-});
+
+  // $("#diskon-item, #total_bayar").keyup(function() {
+
+  //     $('#kolomsisa').show();
+
+  //       var totalakhir  = $("#total_bayar").val();
+  //       var uangdp = $("#down-payment").val();
+
+  //       var total = totalakhir - uangdp;
+  //       $("#numbers").val(total);
+  //     });
+  });
 
 // JavaScript Kelas
 $(document).ready(function(){
