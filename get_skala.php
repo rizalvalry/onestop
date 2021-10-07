@@ -4,7 +4,7 @@
 
 	echo "<option value=''>Pilih Skala</option>";
 
-	$skala = mysqli_query($conn, "SELECT * FROM skala WHERE id_kelas=? ORDER BY nama ASC");
+	$skala = mysqli_query($conn, "SELECT * FROM skala WHERE id_kelas=".$kelas." ORDER BY nama ASC");
 	// $dewan1 = $conn->prepare($query);
 	// $dewan1->bind_param("i", $kelas);
 	// $dewan1->execute();
