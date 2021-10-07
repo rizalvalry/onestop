@@ -44,7 +44,8 @@
   <link href="css/sb-admin.css" rel="stylesheet">
   <!-- sweet alert -->
   <link rel="stylesheet" type="text/css" href="<?php echo getConfig('base_url');?>asset/sweetalert/dist/sweetalert.css">
-
+  <!-- datetime -->
+  <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css" />
 </head>
 
 <body class="fixed-nav sticky-footer bg-light" id="page-top">
@@ -246,4 +247,5 @@
     <script src="js/sb-admin-charts.min.js"></script>
     <!-- sweet alert -->
     <script type="text/javascript" src="<?php echo getConfig('base_url');?>asset/sweetalert/dist/sweetalert.min.js"></script>
-
+    <!-- datetime -->
+    <script src="jquery-ui/jquery-ui.min.js"></script> <!-- Load file plugin js jquery-ui -->
