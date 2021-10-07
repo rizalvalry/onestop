@@ -111,7 +111,7 @@ if(isset($_SESSION['id'])){
 			</div>
 			<div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <a href="proses-Konfirmasi.php?No_Order=<?php echo $hasil['No_Order']; ?>" class="btn btn-primary">Konfirmasi</a>
+                  <a href="proses-konfirmasi.php?No_Order=<?php echo $hasil['No_Order']; ?>" class="btn btn-primary">Konfirmasi</a>
                 </div>
       </form>
 		</div>
