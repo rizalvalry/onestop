@@ -95,8 +95,8 @@ if(isset($_SESSION['id'])){
             </select>
             <br /><br />
         </div>
-        <button type="submit">Tampilkan</button>
-        <a href="profit">Reset Filter</a>
+        <button type="submit" class="btn btn-primary">Tampilkan</button>
+        <a href="profit" class="btn btn-warning">Reset Filter</a>
     </form>
     <hr />
     <?php
