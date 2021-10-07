@@ -233,6 +233,11 @@ if(isset($_SESSION['id'])){
               </div>
 
               <div class="form-group">
+                  <label>Diskon</label>
+                  <input type="text" id="diskon" class="form-control" name="diskon" placeholder="Diskon" value="0" >
+                </div>
+
+              <div class="form-group">
                   <label>Total Bayar</label>
                   <?php
                     $sql = mysqli_query($conn, "SELECT sum(total_harga) as total FROM harga where no_order = $na AND admin_id = $admin_id");
