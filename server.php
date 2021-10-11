@@ -53,7 +53,7 @@
   $comments = '<div id="display_area">';
   while ($row = mysqli_fetch_array($result)) {
    $comments .= '<div class="comment_box">
-      <span class="delete" data-id="' . $row['id'] . '" >Hapus bro</span>
+      <span class="delete" data-id="' . $row['id'] . '" >Hapus </span>
       <span class="edit" data-id="' . $row['id'] . '">edit</span>
       <div class="display_name">'. $row['name'] .'</div>
       <div class="comment_text">'. $row['comment'] .'</div>

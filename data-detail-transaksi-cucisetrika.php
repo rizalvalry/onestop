@@ -6,7 +6,7 @@
                       <th style="text-align: center;">No Order</th>
                       <th>Jenis Pakaian</th>
                       <th>Jenis Laundry</th>
-                      <th>Jumlah Pakaian bro</th>
+                      <th>Jumlah Pakaian </th>
                       <th style="text-align: center;" >Aksi</th>
                     </tr>
                   </thead>
