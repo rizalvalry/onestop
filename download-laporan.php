@@ -42,7 +42,7 @@ span {
 </head>
 <body>
   <?php
-$sql = mysqli_query($conn, "SELECT pelanggan.Nama, kelas.nama as kelas, skala.nama as skala, pelanggan.Alamat, transaksi.Tgl_Terima, transaksi.Tgl_Ambil, transaksi.No_Order, pelanggan.No_Hp 
+$sql = mysqli_query($conn, "SELECT pelanggan.Nama as nama_pelanggan, kelas.nama as kelas, skala.nama as skala, pelanggan.Alamat, transaksi.Tgl_Terima, transaksi.Tgl_Ambil, transaksi.No_Order, pelanggan.No_Hp 
 from 
 pelanggan join transaksi on pelanggan.No_Identitas = transaksi.No_Identitas 
 join kelas on kelas.id_kelas = transaksi.kelas 
@@ -65,9 +65,10 @@ $tgl2 = $hasil['Tgl_Ambil'];
                 <div class="row">
                     <div class="col-md-6">
                     <h4 class="text-dark mb-0"><?= $profil['nama_profil']; ?></h4>
-                    ===========================================
-                        <small><div class="billed"><span class="font-weight-bold">No Order:</span><span class="ml-1"> <?= $hasil['No_Order']; ?></span></div></small>
+                    ================================
                         <small><div class="billed"><span class="font-weight-bold">Pekerja:</span><span class="ml-1"> <?= $kasir['nama']; ?></span></div></small>
+                        <small><div class="billed"><span class="font-weight-bold">No Order:</span><span class="ml-1"> <?= $hasil['No_Order']; ?></span></div></small>
+                        <small><div class="billed"><span class="font-weight-bold">Nama:</span><span class="ml-1"> <?= $hasil['nama_pelanggan']; ?></span></div></small>
                         <small><div class="billed"><span class="font-weight-bold">Tanggal Terima:</span><span class="ml-1"> <?php echo date('d-m-Y H:i:s',strtotime($hasil['Tgl_Terima'])); ?></span></div></small>
                         <small><div class="billed"><span class="font-weight-bold">Date Line:</span><span class="ml-1"> <?= $hasil['skala']; ?></span></div></small>
                     </div>
@@ -126,7 +127,7 @@ $tgl2 = $hasil['Tgl_Ambil'];
 
               <small><div class="billed"><span class="font-weight-bold">Total Bayar (Rp): <?php echo $hasil['Total_Bayar']; ?></span></div></small>
               <small><div class="billed"><span class="font-weight-bold">Sisa Bayar (Rp): <?php echo $hasil['sisa_bayar']; ?></span></div></small>
-              ===========================================
+              ================================
               <small><div class="billed"><span class="font-weight-bold">Instagram : onestoplaundryandrepair / kicksandbags.spa</span></div></small>
               <small><div class="billed"><span class="font-weight-bold">08118870289</span></div></small>
               <small><div class="billed"><span class="font-weight-bold">081210777721</span></div></small>
