@@ -63,6 +63,7 @@ if(isset($_SESSION['id'])){
 
       <a type="button" class="btn btn-success btn-sm " data-toggle="modal" data-target="#ModalBayar<?php echo $hasil['No_Order']; ?>" ><span class="glyphicon glyphicon-repeat" ></span> Konfirmasi</a>
       <a href="cektransaksi.php?cek=<?php echo $hasil['No_Order']; ?>" class="btn btn-warning btn-sm">Lihat</a>
+      <a href="download-laporan.php?cetak=<?php echo $hasil['No_Order']; ?>" class="btn btn-info btn-sm">Cetak</a>
       
       <!-- Modal Konfirmasi bayar -->
   <div class="modal fade bd-example-modal-sm" id="ModalBayar<?php echo $hasil['No_Order']; ?>" tabindex="-1" role="dialog" aria-hidden="true">

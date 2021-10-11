@@ -17,6 +17,8 @@ $id_session = $_SESSION['id'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Struk Transaksi</title>
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!-- custom -->
+  <link href="css/bon.css" rel="stylesheet" type="text/css">
   <style media="screen">
   table, th, td, tr {
   border: 1px solid grey;
@@ -62,26 +64,25 @@ $tgl2 = $hasil['Tgl_Ambil'];
             <div class="p-3 bg-white rounded">
                 <div class="row">
                     <div class="col-md-6">
-                        <h1 class="text-uppercase"><?= $hasil['No_Order']; ?></h1>
-                        <small><div class="billed"><span class="font-weight-bold text-uppercase">Billed:</span><span class="ml-1"><?= $kasir['nama']; ?></span></div></small>
-                        <small><div class="billed"><span class="font-weight-bold text-uppercase">Date:</span><span class="ml-1"><?php echo $hasil['Tgl_Terima']; ?></span></div></small>
-                        <small><div class="billed"><span class="font-weight-bold text-uppercase">Order ID:</span><span class="ml-1">#<?= $hasil['No_Order']; ?></span></div></small>
-                        <span class="text-break"><?= $profil['lokasi']; ?></span>
+                    <h4 class="text-dark mb-0"><?= $profil['nama_profil']; ?></h4>
+                    ===========================================
+                        <small><div class="billed"><span class="font-weight-bold">No Order:</span><span class="ml-1"> <?= $hasil['No_Order']; ?></span></div></small>
+                        <small><div class="billed"><span class="font-weight-bold">Pekerja:</span><span class="ml-1"> <?= $kasir['nama']; ?></span></div></small>
+                        <small><div class="billed"><span class="font-weight-bold">Tanggal Terima:</span><span class="ml-1"> <?php echo date('d-m-Y H:i:s',strtotime($hasil['Tgl_Terima'])); ?></span></div></small>
+                        <small><div class="billed"><span class="font-weight-bold">Date Line:</span><span class="ml-1"> <?= $hasil['skala']; ?></span></div></small>
                     </div>
-                    <div class="col-md-6 text-right mt-3">
-                        <h4 class="text-danger mb-0"><?= $profil['nama_profil']; ?></h4>
-                    </div>
+               
                 </div>
-                <div class="mt-3">
-                    <div class="table-responsive">
-                    <table class="table" >
+  <div class="mt-3">
+      <div class="table-responsive">
+      <table class="table putus-table" >
   <thead>
-    <tr>
-      <th>No</th>
-      <th>Jenis Barang</th>
-      <th>Treatment</th>
-      <th>Jumlah Pakaian/Barang</th>
-      <th>Harga Barang</th>
+    <tr class="putus">
+      <th class="putus">No</th>
+      <th class="putus">Jenis Barang</th>
+      <th class="putus">Treatment</th>
+      <th class="putus">Jumlah Pakaian/Barang</th>
+      <th class="putus">Harga Barang</th>
     </tr>
   </thead>
   <tbody>
@@ -91,12 +92,12 @@ $tgl2 = $hasil['Tgl_Ambil'];
         $sql = mysqli_query($conn, "SELECT Jenis_Pakaian, Jumlah_Pakaian, detail_transaksi.Id_Laundry, laundry.Jenis_Laundry, laundry.Harga FROM (detail_transaksi join pakaian ON detail_transaksi.Id_Pakaian = pakaian.Id_Pakaian join laundry ON detail_transaksi.Id_Laundry = laundry.Id_Laundry) WHERE No_Order = '$No_Order'");
         while ($hasil = mysqli_fetch_array($sql)) {
      ?>
-      <tr>
-        <td style="text-align:center"><?=$i?></td>
-        <td><?php echo $hasil['Jenis_Pakaian']; ?></td>
-        <td><?php echo $hasil['Jenis_Laundry']; ?></td>
-        <td><?php echo $hasil['Jumlah_Pakaian']; ?></td>
-        <td><?php echo $hasil['Harga']; ?></td>
+      <tr class="putus">
+        <td style="text-align:center" class="putus"><?=$i?></td>
+        <td class="putus"><?php echo $hasil['Jenis_Pakaian']; ?></td>
+        <td class="putus"><?php echo $hasil['Jenis_Laundry']; ?></td>
+        <td class="putus"><?php echo $hasil['Jumlah_Pakaian']; ?></td>
+        <td class="putus"><?php echo $hasil['Harga']; ?></td>
       </tr>
       <?php
       $i++;
@@ -106,33 +107,39 @@ $tgl2 = $hasil['Tgl_Ambil'];
 </table>
                     </div>
                 </div>
-                
-                <div class="container">
-<?php
-$sql = mysqli_query($conn, "SELECT total_berat, diskon, dp, Total_Bayar, sisa_bayar from transaksi WHERE No_Order = '$No_Order'");
-while ($hasil = mysqli_fetch_array($sql))
-{
- ?>
-<div>
-  <p class="float-right">Promo : <?php echo $profil['tag']; ?></p>
-</div>
-<div class="">
-  <?php
-  if($hasil['dp'] != 0) {
-    echo "<p>LUNAS (Rp):   ".$hasil['Total_Bayar']."  </p>";
-  } else {
-    echo "<p>DP :   ".$hasil['dp']."  </p>";
-  }
-  ?>
-  <p>Total Bayar (Rp): <?php echo $hasil['Total_Bayar']; ?></p>
-  <p>Total Bayar (Rp): <?php echo $hasil['sisa_bayar']; ?></p>
-</div>
 
-<?php
-}
-?>
+
+
+            <?php
+            $sql = mysqli_query($conn, "SELECT total_berat, diskon, dp, Total_Bayar, sisa_bayar from transaksi WHERE No_Order = '$No_Order'");
+            while ($hasil = mysqli_fetch_array($sql))
+            {
+            ?>
+            
+              <?php
+              if($hasil['dp'] != 0) {
+                echo "<small><div class='billed'><span class='font-weight-bold'>LUNAS (Rp):   ".$hasil['Total_Bayar']."  </span></div></small>";
+              } else {
+                echo "<small><div class='billed'><span class='font-weight-bold'>DP (Rp):   ".$hasil['dp']."  </span></div></small>";
+              }
+              ?>
+
+              <small><div class="billed"><span class="font-weight-bold">Total Bayar (Rp): <?php echo $hasil['Total_Bayar']; ?></span></div></small>
+              <small><div class="billed"><span class="font-weight-bold">Sisa Bayar (Rp): <?php echo $hasil['sisa_bayar']; ?></span></div></small>
+              ===========================================
+              <small><div class="billed"><span class="font-weight-bold">Instagram : onestoplaundryandrepair / kicksandbags.spa</span></div></small>
+              <small><div class="billed"><span class="font-weight-bold">08118870289</span></div></small>
+              <small><div class="billed"><span class="font-weight-bold">081210777721</span></div></small>
+              <small><div class="billed"><span class="font-weight-bold">Promo : <?php echo $profil['tag']; ?></span></div></small>
+              <span class="text-break"><?= $profil['lokasi']; ?></span>
+
+            
+
+            <?php
+            }
+            ?>
                 
-            </div>
+            
         </div>
     </div>
 </div>
