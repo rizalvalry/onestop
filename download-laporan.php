@@ -81,8 +81,8 @@ $tgl2 = $hasil['Tgl_Ambil'];
       <th class="putus">No</th>
       <th class="putus">Jenis Barang</th>
       <th class="putus">Treatment</th>
-      <th class="putus">Jumlah Pakaian/Barang</th>
-      <th class="putus">Harga Barang</th>
+      <th class="putus">Jumlah</th>
+      <th class="putus">Harga</th>
     </tr>
   </thead>
   <tbody>
