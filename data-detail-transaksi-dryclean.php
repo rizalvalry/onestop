@@ -44,7 +44,7 @@
         $sql = mysqli_query($conn, " SELECT p.Jenis_Pakaian, l.Jenis_Laundry, dt.No_Order, dt.Id_Pakaian, dt.Jumlah_pakaian, dt.Id_Laundry, h.total_harga FROM detail_transaksi dt
                                       join pakaian p on dt.Id_Pakaian = p.Id_Pakaian
                                       join laundry l on dt.Id_Laundry = l.Id_Laundry
-                                      join harga h on dt.Id_Pakaian = h.Id_Pakaian
+                                      join harga h on dt.No_Order = h.no_order
                                       Where dt.No_Order = $order AND h.Id_Laundry = 3 AND l.Jenis_Laundry = 'Dry Clean' AND dt.admin_id=$admin_id");
         while ($hasil = mysqli_fetch_array($sql)) {
       ?>
