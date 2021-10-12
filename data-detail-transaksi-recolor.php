@@ -41,11 +41,13 @@
 
         $admin_id = $_SESSION['id'];
         $i = 0 + 1;
-        $sql = mysqli_query($conn, "SELECT p.Jenis_Pakaian, l.Jenis_Laundry, dt.No_Order, dt.Id_Pakaian, dt.Jumlah_pakaian, dt.Id_Laundry, h.total_harga FROM detail_transaksi dt
-                                      join pakaian p on dt.Id_Pakaian = p.Id_Pakaian
-                                      join laundry l on dt.Id_Laundry = l.Id_Laundry
-                                      join harga h on dt.No_Order = h.no_order
-                                      Where dt.No_Order = $order AND h.Id_Laundry = 5 AND l.Jenis_Laundry = 'Recolour' AND dt.admin_id=$admin_id");
+        $sql = mysqli_query($conn, "SELECT * FROM
+        (SELECT p.Jenis_Pakaian, l.Jenis_Laundry, d.No_Order, d.Id_Pakaian, d.Jumlah_pakaian, d.Id_Laundry from detail_transaksi d
+        join pakaian p on d.Id_Pakaian = p.Id_Pakaian
+        join laundry l on d.Id_Laundry = l.Id_Laundry
+        where No_Order = $order AND d.Id_Laundry = 5 AND admin_id=$admin_id)
+        as t1
+        join (SELECT total_harga, Id_Pakaian as idpakaian FROM harga where no_order = $order AND Id_Laundry = 5) as t2 on t1.Id_Pakaian = t2.idpakaian");
         while ($hasil = mysqli_fetch_array($sql)) {
       ?>
       <tr>
