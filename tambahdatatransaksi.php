@@ -197,7 +197,17 @@ if(isset($_SESSION['id'])){
                 </div>
 
                 <div class="form-group">
-                  <label>Total Item</label>
+                  <label>Total Berat Laundry(Kiloan)</label>
+                  <?php
+                    $sql = mysqli_query($conn, "SELECT SUM(total_berat) as jumlah_berat FROM harga where no_order = $na AND Id_Laundry IN ('1', '2', '6')");
+                    $berat = mysqli_fetch_array($sql);
+ 
+                  ?>
+                    <input type="text" id="berat" class="form-control" name="berat" placeholder="Total Berat" value="<?= $berat['jumlah_berat']; ?>" readonly="true" />
+                </div>
+
+                <div class="form-group">
+                  <label>Total Seluruh Item</label>
                   <?php
                     $sql = mysqli_query($conn, "select sum(Jumlah_pakaian) as jumlah FROM detail_transaksi 
                     where No_Order = $na");

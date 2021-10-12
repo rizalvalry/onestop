@@ -6,6 +6,7 @@ include "pm211/class.phpmailer.php";
 $No_Order = $_POST["No_Order"];
 $No_Identitas = $_POST["No_Identitas"];
 $total_berat = $_POST["total_berat"];
+$berat = $_POST["berat"];
 $diskon = $_POST["diskon"];
 $dp = $_POST["dp"];
 $sisa_bayar = $_POST["sisa_bayar"];
@@ -42,7 +43,7 @@ $mail->MsgHTML($isiEmail);
 // 	echo "<script language='javascript'>alert('Gagal di tambahkan');</script>";
 // 	// echo '<meta http-equiv="refresh" content="0; url=tambahdatatransaksi.php">';
 // }else{
-if(empty($_POST["No_Order"]) || empty($_POST["No_Identitas"]) || empty($_POST["total_berat"]) || empty($_POST["total_bayar"])){
+if(empty($_POST["No_Order"]) || empty($_POST["No_Identitas"]) || empty($_POST["total_berat"]) || empty($_POST["berat"]) || empty($_POST["total_bayar"])){
 	echo "<script language='javascript'>alert('Gagal di tambahkan');</script>";
 	echo '<meta http-equiv="refresh" content="0; url=tambahdatatransaksi">';
 }else{
@@ -56,8 +57,8 @@ if(empty($_POST["No_Order"]) || empty($_POST["No_Identitas"]) || empty($_POST["t
 		$sqlUpdateHarga = mysqli_query($conn, "UPDATE harga SET no_order = '$c_No_Order' WHERE No_Order = '$No_Order' AND admin_id = '$admin_id' ");
 		$No_Order = $c_No_Order;
 	}
-	$sql = "INSERT INTO `transaksi` (`No_Order`, `No_Identitas`, `Tgl_Terima`, `Tgl_Ambil`, `total_berat`, `diskon`, `dp`, `sisa_bayar`, `Total_Bayar`, `admin_id`, `kelas`, `skala`, `status`, `payment`)
-			VALUES ('$No_Order', '$No_Identitas', NOW(), NULL, '$total_berat', '$diskon', '$dp', '$sisa_bayar', '$total_bayar', '$admin_id', '$kelas', '$skala', '$status', '$payment')";
+	$sql = "INSERT INTO `transaksi` (`No_Order`, `No_Identitas`, `Tgl_Terima`, `Tgl_Ambil`, `total_berat`, `berat`, `diskon`, `dp`, `sisa_bayar`, `Total_Bayar`, `admin_id`, `kelas`, `skala`, `status`, `payment`)
+			VALUES ('$No_Order', '$No_Identitas', NOW(), NULL, '$total_berat', '$berat', '$diskon', '$dp', '$sisa_bayar', '$total_bayar', '$admin_id', '$kelas', '$skala', '$status', '$payment')";
 			$kueri = mysqli_query($conn, $sql);
 			echo "<script language='javascript'>alert('Berhasil di tambahkan');</script>";
 			echo '<meta http-equiv="refresh" content="0; url=transaksi">';

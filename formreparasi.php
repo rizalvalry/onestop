@@ -101,7 +101,7 @@ $laundry = mysqli_fetch_array($sql);
                 <label>Jenis Pakaian</label>
                 <select class="form-control" name="Id_Pakaian" id="Id_Reparasi_Pakaian">
                   <?php
-                    $sql = mysqli_query($conn, "SELECT * FROM pakaian ORDER BY Jenis_Pakaian");
+                    $sql = mysqli_query($conn, "SELECT Id_Pakaian, Jenis_Pakaian, Reparasi FROM pakaian where Reparasi > 0 ORDER BY Jenis_Pakaian");
                     while ($hasil = mysqli_fetch_array($sql)){
 
                   ?>

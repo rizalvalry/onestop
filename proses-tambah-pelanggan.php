@@ -7,6 +7,16 @@ $Alamat = $_POST["Alamat"];
 $No_Hp = $_POST["No_Hp"];
 $Email = $_POST["Email"];
 
+//cek
+$kode_pelanggan=mysqli_num_rows(mysqli_query($conn, "SELECT * FROM pelanggan WHERE No_Identitas='$No_Identitas' "));
+if ($kode_pelanggan > 0) {
+        echo '<script language="javascript">
+              alert ("Nomor Identitas Customer Sudah Ada");
+              window.location="pelanggan";
+              </script>';
+              exit();
+}
+
 if(empty($_POST["No_Identitas"]) || empty($_POST["Nama"]) || empty($_POST["Alamat"]) || empty($_POST["No_Hp"]) || empty($_POST["Email"])){
 	echo "<script language='javascript'>alert('Gagal di tambahkan');</script>";
 	echo '<meta http-equiv="refresh" content="0; url=tambahdatapelanggan.php">';

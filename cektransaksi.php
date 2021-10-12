@@ -59,11 +59,15 @@ if(isset($_SESSION['id'])){
                   </select>
                 </div>
                 <?php
-                $sql = mysqli_query($conn, "SELECT Tgl_Terima, total_berat, diskon, Total_Bayar, dp, sisa_bayar FROM transaksi WHERE No_Order='".$No_Order."' ");
+                $sql = mysqli_query($conn, "SELECT Tgl_Terima, total_berat, berat, diskon, Total_Bayar, dp, sisa_bayar FROM transaksi WHERE No_Order='".$No_Order."' ");
                 while ($hasil = mysqli_fetch_array($sql)){
                   ?>
                 <div class="form-group">
-                  <label>Total Berat/ Total Item</label>
+                  <label>Total Berat Laundry (Kg)</label>
+                  <input type="text" id="berat" class="form-control" name="berat" placeholder="Total Berat" value="<?php echo $hasil['berat']; ?>" readonly>
+                </div>
+                <div class="form-group">
+                  <label>Total Seluruh Item</label>
                   <input type="text" id="total_berat" class="form-control" name="total_berat" placeholder="Total Berat" value="<?php echo $hasil['total_berat']; ?>" readonly>
                 </div>
                 <div class="form-group">
