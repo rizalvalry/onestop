@@ -1,7 +1,6 @@
 <?php
 session_start();
 if(isset($_SESSION['id'])){
-  $admin_id=$_SESSION['id'];
 ?>
 
     <?php
@@ -60,7 +59,7 @@ if(isset($_SESSION['id'])){
                   </select>
                 </div>
                 <?php
-                $sql = mysqli_query($conn, "SELECT Tgl_Terima, total_berat, berat, diskon, Total_Bayar, dp, sisa_bayar FROM transaksi WHERE No_Order='".$No_Order."' AND admin_id = $admin_id");
+                $sql = mysqli_query($conn, "SELECT Tgl_Terima, total_berat, berat, diskon, Total_Bayar, dp, sisa_bayar FROM transaksi WHERE No_Order='".$No_Order."' ");
                 while ($hasil = mysqli_fetch_array($sql)){
                   ?>
                 <div class="form-group">
@@ -218,7 +217,7 @@ if(isset($_SESSION['id'])){
                     $sql = mysqli_query($conn, "SELECT pakaian.Jenis_Pakaian, laundry.Jenis_Laundry, detail_transaksi.No_Order, detail_transaksi.Id_Pakaian, detail_transaksi.Jumlah_pakaian FROM detail_transaksi 
                     join pakaian on detail_transaksi.Id_Pakaian = pakaian.Id_Pakaian
                     join laundry on detail_transaksi.Id_Laundry = laundry.Id_Laundry
-                    where No_Order = $No_Order");
+                    Where No_Order = $No_Order");
                     while ($hasil = mysqli_fetch_array($sql)) {
                  ?>
               <tr>
