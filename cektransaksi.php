@@ -215,8 +215,8 @@ if(isset($_SESSION['id'])){
                   <?php
                     $i = 0 + 1;
                     $sql = mysqli_query($conn, "SELECT pakaian.Jenis_Pakaian, laundry.Jenis_Laundry, detail_transaksi.No_Order, detail_transaksi.Id_Pakaian, detail_transaksi.Jumlah_pakaian FROM detail_transaksi 
-                    join pakaian on detail_transaksi.Id_Pakaian = Pakaian.Id_Pakaian
-                    join laundry on detail_transaksi.Id_Laundry = Laundry.Id_Laundry
+                    join pakaian on detail_transaksi.Id_Pakaian = pakaian.Id_Pakaian
+                    join laundry on detail_transaksi.Id_Laundry = laundry.Id_Laundry
                     Where No_Order = $No_Order");
                     while ($hasil = mysqli_fetch_array($sql)) {
                  ?>
