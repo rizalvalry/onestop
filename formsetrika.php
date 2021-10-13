@@ -97,17 +97,18 @@ $laundry = mysqli_fetch_array($sql);
               // }
               ?>
               <input type="text" class="form-control" name="No_Order" id="setrika_No_Order" value="<?php echo $orderNo;  ?>" readonly>
-              <div class="form-group">
+              
+              <div class="form-group" style="display:none;">
                 <label>Jenis Pakaian</label>
                 <select class="form-control" name="Id_Pakaian" id="Id_setrika_Pakaian">
                   <?php
-                    $sql = mysqli_query($conn, "SELECT * FROM pakaian ORDER BY Jenis_Pakaian");
-                    while ($hasil = mysqli_fetch_array($sql)){
+                    // $sql = mysqli_query($conn, "SELECT * FROM pakaian ORDER BY Jenis_Pakaian");
+                    // while ($hasil = mysqli_fetch_array($sql)){
 
                   ?>
-                  <option value="<?=$hasil['Id_Pakaian'];?>"><?=$hasil['Jenis_Pakaian'];?></option>
+                  <option value="KL">Kiloan</option>
                   <?php
-                  }
+                  // }
                    ?>
                 </select>
               </div>
