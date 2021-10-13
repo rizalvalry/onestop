@@ -131,6 +131,10 @@ if(isset($_SESSION['id'])){
           <a href="#" class="btn btn-primary btn-sm disabled" aria-disabled="true"><span class="glyphicon glyphicon-ok-sign" ></span> Selesai</a>
           <a href="cektransaksi.php?cek=<?php echo $hasil['No_Order']; ?>" class="btn btn-warning btn-sm">Lihat</a>
           <a href="download-laporan.php?cetak=<?php echo $hasil['No_Order']; ?>" class="btn btn-info btn-sm">Cetak</a>
+          <?php if($_SESSION['role_id'] == 1) { ?>
+          <a href="proses-hapus-transaksi.php?hapus=<?php echo $hasil['No_Order']; ?>" class="btn btn-danger btn-sm">Hapus</a></td>
+          <?php } ?>
+
           <?php } ?>
     </tr>
 
