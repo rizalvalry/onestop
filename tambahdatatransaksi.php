@@ -8,7 +8,7 @@ if(isset($_SESSION['id'])){
       include "include/header.php";
     ?>
     <?php
-      $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
+      $sql = mysqli_query($conn, "SELECT No_Order FROM detail_transaksi where admin_id = $admin_id ORDER BY No_Order Desc LIMIT 1");
       while ($hasil = mysqli_fetch_array($sql)){
         $na = $hasil['No_Order'] + 1;
       }
