@@ -42,7 +42,7 @@ span {
 </head>
 <body>
   <?php
-$sql = mysqli_query($conn, "SELECT transaksi.keterangan, pelanggan.Nama as nama_pelanggan, kelas.nama as kelas, skala.nama as skala, pelanggan.Alamat, transaksi.Tgl_Terima, transaksi.Tgl_Ambil, transaksi.No_Order, pelanggan.No_Hp 
+$sql = mysqli_query($conn, "SELECT pelanggan.Nama as nama_pelanggan, kelas.nama as kelas, skala.nama as skala, pelanggan.Alamat, transaksi.Tgl_Terima, transaksi.Tgl_Ambil, transaksi.No_Order, pelanggan.No_Hp 
 from 
 pelanggan join transaksi on pelanggan.No_Identitas = transaksi.No_Identitas 
 join kelas on kelas.id_kelas = transaksi.kelas 
@@ -112,7 +112,7 @@ $tgl2 = $hasil['Tgl_Ambil'];
 
 
             <?php
-            $sql = mysqli_query($conn, "SELECT total_berat, diskon, dp, Total_Bayar, sisa_bayar from transaksi WHERE No_Order = '$No_Order'");
+            $sql = mysqli_query($conn, "SELECT keterangan, total_berat, diskon, dp, Total_Bayar, sisa_bayar from transaksi WHERE No_Order = '$No_Order'");
             while ($hasil = mysqli_fetch_array($sql))
             {
             ?>
