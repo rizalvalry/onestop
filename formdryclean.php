@@ -8,17 +8,16 @@ $laundry = mysqli_fetch_array($sql);
           <div class="col-md-12">
             <form name="formdrycleanorder">
             <?php
-            $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
-            while ($hasil = mysqli_fetch_array($sql)){
-              ?>
-                <div class="form-group">
-                  <label>No. Order</label>
-                  <input type="text" class="form-control" name="No_Order" value="<?php echo $hasil['No_Order']; ?>" readonly>
-                </div>
-                <?php
-                    }
-                    ?>
-
+            // $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
+            // while ($hasil = mysqli_fetch_array($sql)){
+            //   $orderNo = $hasil['No_Order'];
+            // }
+            $orderNo = $_SESSION['no_order'];
+            ?>
+              <div class="form-group">
+                <label>No. Order</label>
+                <input type="text" class="form-control" name="No_Order" value="<?php echo $orderNo; ?>" readonly>
+              </div>
               
             </form>
           
@@ -36,15 +35,15 @@ $laundry = mysqli_fetch_array($sql);
                   <label>Total Berat / Item</label>
 
                   <?php
-                  $sql = mysqli_query($conn, "SELECT No_Order FROM detail_transaksi  ORDER BY No_Order Desc LIMIT 1");
-                  $hasil = mysqli_fetch_array($sql);
-                  $order = $hasil['No_Order'];
+                  // $sql = mysqli_query($conn, "SELECT No_Order FROM detail_transaksi  ORDER BY No_Order Desc LIMIT 1");
+                  // $hasil = mysqli_fetch_array($sql);
+                  // $orderNo = $hasil['No_Order'];
                   ?>
                   <input type="hidden" class="form-control" name="no_order" value="<?= $hasil['No_Order']; ?>">
                   <?php
-                  $admin_id = $_SESSION['id'];
-                  $sql = mysqli_query($conn, "SELECT sum(total_berat) as total_berat, sum(total_harga) as total_harga FROM harga  where no_order = '$order' AND Id_Laundry = 3 AND admin_id=$admin_id");
-                  $hasil = mysqli_fetch_array($sql);
+                  // $admin_id = $_SESSION['id'];
+                  // $sql = mysqli_query($conn, "SELECT sum(total_berat) as total_berat, sum(total_harga) as total_harga FROM harga  where no_order = '$orderNo' AND Id_Laundry = 3 AND admin_id=$admin_id");
+                  // $hasil = mysqli_fetch_array($sql);
                   ?>
                   <input type="text" id="dryclean_total_berat" class="form-control" name="total_berat" onkeypress='validate(event)' placeholder="Total Berat" value="<?= $hasil['total_berat']; ?>" readonly>
                 </div>
@@ -91,12 +90,12 @@ $laundry = mysqli_fetch_array($sql);
           <form method="post" class="dryclean-form-data" id="dryclean-form-data">  
           <input type="hidden" name="id_ajax_dryclean" id="dryclean_cuci">
               <?php
-                $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
-                while ($hasil = mysqli_fetch_array($sql)){
-                  $na = $hasil['No_Order'];
-              }
+              //   $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
+              //   while ($hasil = mysqli_fetch_array($sql)){
+              //     $na = $hasil['No_Order'];
+              // }
               ?>
-              <input type="text" class="form-control" name="No_Order" id="Dryclean_No_Order" value="<?php echo $na + 1;  ?>" readonly>
+              <input type="text" class="form-control" name="No_Order" id="Dryclean_No_Order" value="<?php echo $orderNo;  ?>" readonly>
               <div class="form-group">
                 <label>Jenis Pakaian</label>
                 <select class="form-control" name="Id_Pakaian" id="Id_Dryclean_Pakaian">
@@ -141,9 +140,9 @@ $cuci = mysqli_fetch_array($sql);
 
 <script type="text/javascript">
 // setrika
-d=eval(formdrycleanorder.No_Order.value)
-e = d+1
-formdrycleanorder.No_Order.value=e
+// d=eval(formdrycleanorder.No_Order.value)
+// e = d+1
+// formdrycleanorder.No_Order.value=e
     function tambahDryclean()
       {
         a=eval(formdryclean.dryclean_total_berat.value)

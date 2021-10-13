@@ -60,6 +60,7 @@ if(empty($_POST["No_Order"]) || empty($_POST["No_Identitas"]) || empty($_POST["t
 	$sql = "INSERT INTO `transaksi` (`No_Order`, `No_Identitas`, `Tgl_Terima`, `Tgl_Ambil`, `total_berat`, `berat`, `diskon`, `dp`, `sisa_bayar`, `Total_Bayar`, `admin_id`, `kelas`, `skala`, `status`, `payment`)
 			VALUES ('$No_Order', '$No_Identitas', NOW(), NULL, '$total_berat', '$berat', '$diskon', '$dp', '$sisa_bayar', '$total_bayar', '$admin_id', '$kelas', '$skala', '$status', '$payment')";
 			$kueri = mysqli_query($conn, $sql);
+			unset($_SESSION['no_order']);
 			echo "<script language='javascript'>alert('Berhasil di tambahkan');</script>";
 			echo '<meta http-equiv="refresh" content="0; url=transaksi">';
 }

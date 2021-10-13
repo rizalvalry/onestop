@@ -8,18 +8,16 @@ $laundry = mysqli_fetch_array($sql);
           <div class="col-md-12">
             <form name="formcucisetrikaorder">
             <?php
-            $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
-            while ($hasil = mysqli_fetch_array($sql)){
-              $order = $hasil['No_Order'];
-              ?>
-                <div class="form-group">
-                  <label>No. Order</label>
-                  <input type="text" class="form-control" name="No_Order" value="<?php echo $order; ?>" readonly>
-                </div>
-                <?php
-                    }
-                    ?>
-
+            // $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
+            // while ($hasil = mysqli_fetch_array($sql)){
+            //   $orderNo = $hasil['No_Order'];
+            // }
+            $orderNo = $_SESSION['no_order'];
+            ?>
+              <div class="form-group">
+                <label>No. Order</label>
+                <input type="text" class="form-control" name="No_Order" value="<?php echo $orderNo; ?>" readonly>
+              </div>
               
             </form>
           
@@ -39,12 +37,12 @@ $laundry = mysqli_fetch_array($sql);
                   <?php
                   // $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
                   // $hasil = mysqli_fetch_array($sql);
-                  // $order = $hasil['No_Order'];
+                  // $orderNo = $hasil['No_Order'];
                   ?>
-                  <input type="hidden" class="form-control" name="no_order" value="<?= $order+1; ?>">
+                  <input type="hidden" class="form-control" name="no_order" value="<?= $orderNo; ?>">
                   <?php
                   $admin_id = $_SESSION['id'];
-                  $sql = mysqli_query($conn, "SELECT * FROM harga  where no_order = $order+1 AND Id_Laundry = 2 AND admin_id=$admin_id");
+                  $sql = mysqli_query($conn, "SELECT * FROM harga  where no_order = $orderNo AND Id_Laundry = 2 AND admin_id=$admin_id");
                   $hasil = mysqli_fetch_array($sql);
                   ?>
                   <input type="text" id="cucisetrika_total_berat" class="form-control" name="total_berat" onkeypress='validate(event)' placeholder="Total Berat" value="<?= $hasil['total_berat']; ?>">
@@ -92,12 +90,12 @@ $laundry = mysqli_fetch_array($sql);
           <form method="post" class="cucisetrika-form-data" id="cucisetrika-form-data">  
           <input type="hidden" name="id_ajax_cucisetrika" id="cucisetrika_cuci">
               <?php
-                $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
-                while ($hasil = mysqli_fetch_array($sql)){
-                  $na = $hasil['No_Order'];
-              }
+              //   $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
+              //   while ($hasil = mysqli_fetch_array($sql)){
+              //     $orderNo = $hasil['No_Order'];
+              // }
               ?>
-              <input type="text" class="form-control" name="No_Order" id="cucisetrika_No_Order" value="<?php echo $na + 1;  ?>" readonly>
+              <input type="text" class="form-control" name="No_Order" id="cucisetrika_No_Order" value="<?php echo $orderNo;  ?>" readonly>
               <div class="form-group">
                 <label>Jenis Pakaian</label>
                 <select class="form-control" name="Id_Pakaian" id="Id_cucisetrika_Pakaian">
@@ -142,9 +140,9 @@ $cuci = mysqli_fetch_array($sql);
 
 <script type="text/javascript">
 // setrika
-d=eval(formcucisetrikaorder.No_Order.value)
-e = d+1
-formcucisetrikaorder.No_Order.value=e
+// d=eval(formcucisetrikaorder.No_Order.value)
+// e = d+1
+// formcucisetrikaorder.No_Order.value=e
     function tambahcucisetrika()
       {
         a=eval(formcucisetrika.cucisetrika_total_berat.value)

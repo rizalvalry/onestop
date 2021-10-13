@@ -8,10 +8,15 @@ if(isset($_SESSION['id'])){
       include "include/header.php";
     ?>
     <?php
+    if(isset($_SESSION['no_order'])){
+      $orderNo = $_SESSION['no_order'];
+    } else {
       $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
       while ($hasil = mysqli_fetch_array($sql)){
-        $na = $hasil['No_Order'] + 1;
+  		  $_SESSION['no_order'] = $hasil['No_Order'] + 1;
       }
+      $orderNo = $_SESSION['no_order'];
+    }
     ?>
     <style type="text/css">
     		.css_pesan { background-color: #F0FFED; border: 1px solid #215800; padding: 10px; width: 180px; margin-bottom: 20px; }
@@ -35,8 +40,8 @@ if(isset($_SESSION['id'])){
   <hr>
 
   <div class="form-group">
-    <button type="button" class="btn btn-secondary btn-md " id="lannjutTransaksi" data-id="<?php echo $na; ?>" data-admin-id="<?php echo $admin_id; ?>" ><span class="glyphicon glyphicon-plus " ></span> Lanjutkan Transaksi</button>
-    <button type="button" class="btn btn-danger btn-md " id="clearAll" data-id="<?php echo $na; ?>"><span class="glyphicon glyphicon-plus " ></span> Clear</button>
+    <button type="button" class="btn btn-secondary btn-md " id="lannjutTransaksi" data-id="<?php echo $orderNo; ?>" data-admin-id="<?php echo $admin_id; ?>" ><span class="glyphicon glyphicon-plus " ></span> Lanjutkan Transaksi</button>
+    <button type="button" class="btn btn-danger btn-md " id="clearAll" data-id="<?php echo $orderNo; ?>"><span class="glyphicon glyphicon-plus " ></span> Clear</button>
   </div>
 
   <?php
@@ -165,10 +170,10 @@ if(isset($_SESSION['id'])){
           <div class="modal-body">
 
             <?php
-              $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
-              while ($hasil = mysqli_fetch_array($sql)){
-                $na = $hasil['No_Order'] + 1;
-              }
+              // $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
+              // while ($hasil = mysqli_fetch_array($sql)){
+              //   $orderNo = $hasil['No_Order'] + 1;
+              // }
             ?>
             
 
@@ -176,7 +181,7 @@ if(isset($_SESSION['id'])){
 
               <div class="form-group">
               <label>No Order</label>
-                <input type="text" class="form-control" name="No_Order" id="No_Cuci_Order" value="<?php echo $na;  ?>" readonly>
+                <input type="text" class="form-control" name="No_Order" id="No_Cuci_Order" value="<?php echo $orderNo;  ?>" readonly>
               </div>
 
               <input type="hidden" class="form-control" name="admin_id" value="<?= $_SESSION['id']; ?>" readonly="true">
@@ -199,7 +204,7 @@ if(isset($_SESSION['id'])){
                 <div class="form-group">
                   <label>Total Berat Laundry(Kiloan)</label>
                   <?php
-                    $sql = mysqli_query($conn, "SELECT SUM(total_berat) as jumlah_berat FROM harga where no_order = $na AND Id_Laundry IN ('1', '2', '6')");
+                    $sql = mysqli_query($conn, "SELECT SUM(total_berat) as jumlah_berat FROM harga where no_order = $orderNo AND Id_Laundry IN ('1', '2', '6')");
                     $berat = mysqli_fetch_array($sql);
  
                   ?>
@@ -209,8 +214,9 @@ if(isset($_SESSION['id'])){
                 <div class="form-group">
                   <label>Total Seluruh Item</label>
                   <?php
+                  echo $admin_id;
                     $sql = mysqli_query($conn, "select sum(Jumlah_pakaian) as jumlah FROM detail_transaksi 
-                    where No_Order = $na AND admin_id = $admin_id");
+                    where No_Order = $orderNo AND admin_id = $admin_id GROUP BY admin_id");
                     $total = mysqli_fetch_array($sql);
                   ?>
                     <input type="text" id="total_berat" class="form-control" name="total_berat" placeholder="Total Berat" value="<?= $total['jumlah']; ?>" readonly="true" />

@@ -8,17 +8,16 @@ $laundry = mysqli_fetch_array($sql);
           <div class="col-md-12">
             <form name="formrecolororder">
             <?php
-            $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
-            while ($hasil = mysqli_fetch_array($sql)){
-              ?>
-                <div class="form-group">
-                  <label>No. Order</label>
-                  <input type="text" class="form-control" name="No_Order" value="<?php echo $hasil['No_Order']; ?>" readonly>
-                </div>
-                <?php
-                    }
-                    ?>
-
+            // $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi  ORDER BY No_Order Desc LIMIT 1");
+            // while ($hasil = mysqli_fetch_array($sql)){
+            //   $orderNo = $hasil['No_Order'];
+            // }
+            $orderNo = $_SESSION['no_order'];
+            ?>
+              <div class="form-group">
+                <label>No. Order</label>
+                <input type="text" class="form-control" name="No_Order" value="<?php echo $orderNo; ?>" readonly>
+              </div>
               
             </form>
           
@@ -91,12 +90,12 @@ $laundry = mysqli_fetch_array($sql);
           <form method="post" class="recolor-form-data" id="recolor-form-data">  
           <input type="hidden" name="id_ajax_recolor" id="recolor_cuci">
               <?php
-                $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
-                while ($hasil = mysqli_fetch_array($sql)){
-                  $na = $hasil['No_Order'];
-              }
+              //   $sql = mysqli_query($conn, "SELECT No_Order FROM transaksi ORDER BY No_Order Desc LIMIT 1");
+              //   while ($hasil = mysqli_fetch_array($sql)){
+              //     $na = $hasil['No_Order'];
+              // }
               ?>
-              <input type="text" class="form-control" name="No_Order" id="Recolor_No_Order" value="<?php echo $na + 1;  ?>" readonly>
+              <input type="text" class="form-control" name="No_Order" id="Recolor_No_Order" value="<?php echo $orderNo;  ?>" readonly>
               <div class="form-group">
                 <label>Jenis Pakaian</label>
                 <select class="form-control" name="Id_Pakaian" id="Id_Recolor_Pakaian">
@@ -141,9 +140,9 @@ $cuci = mysqli_fetch_array($sql);
 
 <script type="text/javascript">
 // setrika
-d=eval(formrecolororder.No_Order.value)
-e = d+1
-formrecolororder.No_Order.value=e
+// d=eval(formrecolororder.No_Order.value)
+// e = d+1
+// formrecolororder.No_Order.value=e
     function tambahRecolor()
       {
         a=eval(formrecolor.recolor_total_berat.value)
