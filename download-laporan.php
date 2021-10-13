@@ -157,6 +157,6 @@ $dompdf = new DOMPDF();
 $dompdf->set_paper("A5");
 $dompdf->load_html($html);
 $dompdf->render();
-$dompdf->stream('struk.pdf');
+$dompdf->stream(" '".$No_Order."'.pdf");
 
 ?>
