@@ -209,8 +209,9 @@ if(isset($_SESSION['id'])){
                 <div class="form-group">
                   <label>Total Seluruh Item</label>
                   <?php
+                  echo $admin_id;
                     $sql = mysqli_query($conn, "select sum(Jumlah_pakaian) as jumlah FROM detail_transaksi 
-                    where No_Order = $na AND admin_id = $admin_id");
+                    where No_Order = $na AND admin_id = $admin_id GROUP BY admin_id");
                     $total = mysqli_fetch_array($sql);
                   ?>
                     <input type="text" id="total_berat" class="form-control" name="total_berat" placeholder="Total Berat" value="<?= $total['jumlah']; ?>" readonly="true" />
