@@ -4,3 +4,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^(.*)$ $1.php
 </IfModule>
+
+ php_value session.gc_maxlifetime 86400
+ php_value session.cookie_lifetime 86400
+ php_value session.cache_expire 86400
