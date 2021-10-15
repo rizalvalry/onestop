@@ -43,7 +43,7 @@ $mail->MsgHTML($isiEmail);
 // 	echo "<script language='javascript'>alert('Gagal di tambahkan');</script>";
 // 	// echo '<meta http-equiv="refresh" content="0; url=tambahdatatransaksi.php">';
 // }else{
-if(empty($_POST["No_Order"]) || empty($_POST["No_Identitas"]) || empty($_POST["total_berat"]) || empty($_POST["berat"]) || empty($_POST["total_bayar"])){
+if(empty($_POST["No_Order"]) || empty($_POST["No_Identitas"]) || empty($_POST["total_bayar"])){
 	echo "<script language='javascript'>alert('Gagal di tambahkan');</script>";
 	echo '<meta http-equiv="refresh" content="0; url=tambahdatatransaksi">';
 }else{
