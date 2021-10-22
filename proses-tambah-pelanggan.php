@@ -17,6 +17,14 @@ if ($kode_pelanggan > 0) {
               exit();
 }
 
+if(!preg_match("/^[0-9+]*$/",$_POST["No_Identitas"])) {
+	echo '<script language="javascript">
+	alert ("Nomor Identitas Harus berupa angka dan tidak boleh memiliki karakter simbol");
+	window.location="pelanggan";
+	</script>';
+	exit();
+}
+
 if(empty($_POST["No_Identitas"]) || empty($_POST["Nama"]) || empty($_POST["Alamat"]) || empty($_POST["No_Hp"]) || empty($_POST["Email"])){
 	echo "<script language='javascript'>alert('Gagal di tambahkan');</script>";
 	echo '<meta http-equiv="refresh" content="0; url=tambahdatapelanggan.php">';
