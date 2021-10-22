@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 13/10/2021 16:19:58
+ Date: 22/10/2021 18:46:42
 */
 
 SET NAMES utf8mb4;
@@ -46,11 +46,11 @@ INSERT INTO `admin` VALUES (9, 'Firman', 'firman@gmail.com', '085781571742', 'ka
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `comment_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `comment_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comments
@@ -84,10 +84,10 @@ INSERT INTO `config` VALUES (5, 'midtrans_server_key', 'SB-Mid-server-v4b5cO_LFY
 DROP TABLE IF EXISTS `data`;
 CREATE TABLE `data`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kelas` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `skala` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `kelas` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `skala` char(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of data
@@ -166,9 +166,16 @@ INSERT INTO `detail_transaksi` VALUES ('1178', 'D1', '6', 5, 0, 8);
 INSERT INTO `detail_transaksi` VALUES ('1179', 'KL', '2', 40, 0, 8);
 INSERT INTO `detail_transaksi` VALUES ('1179', 'B1', '3', 3, 0, 8);
 INSERT INTO `detail_transaksi` VALUES ('1179', 'P3', '3', 4, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1185', 'B1', '3', 5, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1185', 'KL', '2', 44, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1184', 'B1', '4', 2, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1183', 'B1', '3', 2, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1182', 'KL', '2', 23, 0, 8);
 INSERT INTO `detail_transaksi` VALUES ('1180', 'B1', '3', 2, 0, 9);
-INSERT INTO `detail_transaksi` VALUES ('1180', 'S2', '3', 4, 0, 8);
-INSERT INTO `detail_transaksi` VALUES ('1180', 'B1', '2', 25, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1181', 'S2', '3', 6, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1180', 'P3', '3', 4, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1185', 'B1', '4', 4, 0, 8);
+INSERT INTO `detail_transaksi` VALUES ('1185', 'B1', '5', 2, 0, 8);
 
 -- ----------------------------
 -- Table structure for files_upload
@@ -176,12 +183,12 @@ INSERT INTO `detail_transaksi` VALUES ('1180', 'B1', '2', 25, 0, 8);
 DROP TABLE IF EXISTS `files_upload`;
 CREATE TABLE `files_upload`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `file_ext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `file_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `file_ext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `file_location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of files_upload
@@ -192,13 +199,13 @@ CREATE TABLE `files_upload`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `harga`;
 CREATE TABLE `harga`  (
-  `no_order` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `no_order` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `total_berat` int(11) NOT NULL,
   `total_harga` int(11) NOT NULL,
   `Id_Laundry` int(11) NOT NULL,
-  `Id_Pakaian` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `Id_Pakaian` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `admin_id` int(11) NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of harga
@@ -223,9 +230,16 @@ INSERT INTO `harga` VALUES ('1178', 2, 6000, 6, NULL, 8);
 INSERT INTO `harga` VALUES ('1179', 2, 19500, 2, NULL, 8);
 INSERT INTO `harga` VALUES ('1179', 3, 75000, 3, 'B1', 8);
 INSERT INTO `harga` VALUES ('1179', 4, 180000, 3, 'P3', 8);
-INSERT INTO `harga` VALUES ('1180', 4, 26000, 2, NULL, 8);
-INSERT INTO `harga` VALUES ('1180', 4, 20000, 3, 'S2', 8);
 INSERT INTO `harga` VALUES ('1180', 2, 50000, 3, 'B1', 9);
+INSERT INTO `harga` VALUES ('1180', 4, 180000, 3, 'P3', 8);
+INSERT INTO `harga` VALUES ('1181', 6, 30000, 3, 'S2', 8);
+INSERT INTO `harga` VALUES ('1182', 4, 26000, 2, NULL, 8);
+INSERT INTO `harga` VALUES ('1183', 2, 50000, 3, 'B1', 8);
+INSERT INTO `harga` VALUES ('1184', 2, 130000, 4, 'B1', 8);
+INSERT INTO `harga` VALUES ('1185', 4, 26000, 2, NULL, 8);
+INSERT INTO `harga` VALUES ('1185', 5, 125000, 3, 'B1', 8);
+INSERT INTO `harga` VALUES ('1185', 4, 260000, 4, 'B1', 8);
+INSERT INTO `harga` VALUES ('1185', 2, 240000, 5, 'B1', 8);
 
 -- ----------------------------
 -- Table structure for kelas
@@ -250,10 +264,10 @@ INSERT INTO `kelas` VALUES ('3', 'reparasi');
 DROP TABLE IF EXISTS `laundry`;
 CREATE TABLE `laundry`  (
   `Id_Laundry` int(11) NOT NULL AUTO_INCREMENT,
-  `Jenis_Laundry` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `Jenis_Laundry` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `Harga` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`Id_Laundry`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of laundry
@@ -271,10 +285,10 @@ INSERT INTO `laundry` VALUES (6, 'Cuci', 2000);
 DROP TABLE IF EXISTS `merk_warna_exist`;
 CREATE TABLE `merk_warna_exist`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `merk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `warna` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `merk` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `warna` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of merk_warna_exist
@@ -289,10 +303,10 @@ INSERT INTO `merk_warna_exist` VALUES (3, NULL, '');
 DROP TABLE IF EXISTS `notification_data`;
 CREATE TABLE `notification_data`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notification_data
@@ -305,10 +319,10 @@ INSERT INTO `notification_data` VALUES (1, 'start', 'pesan');
 DROP TABLE IF EXISTS `otp`;
 CREATE TABLE `otp`  (
   `id` int(11) NOT NULL,
-  `nomer` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nomer` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `otp` int(4) NOT NULL,
   `waktu` int(20) NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of otp
@@ -367,7 +381,7 @@ INSERT INTO `pakaian` VALUES ('KL', 'Kiloan', 0, 0, 0);
 -- ----------------------------
 DROP TABLE IF EXISTS `pelanggan`;
 CREATE TABLE `pelanggan`  (
-  `No_Identitas` char(8) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `No_Identitas` char(14) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `Nama` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `Alamat` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `No_Hp` varchar(15) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -378,16 +392,11 @@ CREATE TABLE `pelanggan`  (
 -- ----------------------------
 -- Records of pelanggan
 -- ----------------------------
-INSERT INTO `pelanggan` VALUES ('10115562', 'Hani', 'Bandung', '081232121111', 'rizal.muh.rzl@gmail.com');
 INSERT INTO `pelanggan` VALUES ('10115310', 'Barrur', 'Bandung', '089123222321', 'info@valryhouse.com');
 INSERT INTO `pelanggan` VALUES ('10115315', 'Nanda', 'Bandung', '087824521555', 'rizal.muh.rzl@gmail.com');
 INSERT INTO `pelanggan` VALUES ('10115313', 'Fata', 'Bandung', '087822555784', 'rizal.muh.rzl@gmail.com');
-INSERT INTO `pelanggan` VALUES ('10115322', 'Sinta', 'Bandung', '082313112111', 'rizal.muh.rzl@gmail.com');
-INSERT INTO `pelanggan` VALUES ('10115320', 'Nur', 'Bandung', '082122122122', 'rizal.muh.rzl@gmail.com');
-INSERT INTO `pelanggan` VALUES ('31749892', 'Afrizal', 'Cikoko', '085478345', 'rizal.muh.rzl@gmail.com');
-INSERT INTO `pelanggan` VALUES ('32175845', 'Khoirul', 'Pengadegan', '08572743763', 'rizal.muh.rzl@gmail.com');
-INSERT INTO `pelanggan` VALUES ('32174543', 'Ujang', 'Bali', '0968546345', 'ujang@gmail.com');
-INSERT INTO `pelanggan` VALUES ('93287483', 'Rizal', 'cikoko', '08443724387', 'cawangbsi@gmail.com');
+INSERT INTO `pelanggan` VALUES ('123456789101', 'pahrul', 'cikoko', '08443724387', 'rizal.muh.rzl@gmail.com');
+INSERT INTO `pelanggan` VALUES ('0045749', 'Opai', 'cikoko', '08572743763', 'rizal.muh.rzl@gmail.com');
 
 -- ----------------------------
 -- Table structure for profil
@@ -395,16 +404,16 @@ INSERT INTO `pelanggan` VALUES ('93287483', 'Rizal', 'cikoko', '08443724387', 'c
 DROP TABLE IF EXISTS `profil`;
 CREATE TABLE `profil`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_profil` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `no_telp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `no_telp2` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `lokasi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `no_rekening` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `gambar` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nama_profil` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `tag` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `no_telp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `no_telp2` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `lokasi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `no_rekening` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `gambar` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of profil
@@ -492,6 +501,12 @@ INSERT INTO `transaksi` VALUES ('1174', '10115562', '2021-10-07 22:50:44', '2021
 INSERT INTO `transaksi` VALUES ('1177', '31749892', '2021-10-08 02:20:58', NULL, 1, 0, 1000, 1000, 5500, 6500, 8, '2', '5', 'baru', NULL, NULL, NULL);
 INSERT INTO `transaksi` VALUES ('1178', '10115562', '2021-10-12 11:37:12', NULL, 130, 6, 0, 0, 0, 82000, 8, '2', '5', 'baru', NULL, 'tunai', NULL);
 INSERT INTO `transaksi` VALUES ('1179', '31749892', '2021-10-12 11:39:40', NULL, 47, 2, -15, 0, 0, 274500, 8, '2', '5', 'baru', NULL, 'tunai', NULL);
+INSERT INTO `transaksi` VALUES ('1180', '10115320', '2021-10-16 00:15:31', NULL, 4, 0, 0, 0, 0, 180000, 8, '2', '5', 'baru', NULL, 'transfer', NULL);
+INSERT INTO `transaksi` VALUES ('1181', '10115315', '2021-10-16 00:17:05', NULL, 6, 0, 0, 0, 0, 30000, 8, '2', '5', 'baru', NULL, 'transfer', NULL);
+INSERT INTO `transaksi` VALUES ('1182', '31749892', '2021-10-16 00:18:09', NULL, 23, 4, 0, 0, 0, 26000, 8, '2', '5', 'baru', NULL, 'transfer', NULL);
+INSERT INTO `transaksi` VALUES ('1183', '10115310', '2021-10-22 15:13:01', NULL, 2, 0, 0, 0, 0, 50000, 8, '2', '5', 'proses', '', 'tunai', NULL);
+INSERT INTO `transaksi` VALUES ('1184', '10115562', '2021-10-22 15:29:44', NULL, 2, 0, 0, 30000, 100000, 130000, 8, '2', '5', 'proses', '', 'tunai', NULL);
+INSERT INTO `transaksi` VALUES ('1185', '10115313', '2021-10-22 18:42:54', NULL, 55, 4, 0, 51000, 600000, 651000, 8, '1', '1', 'baru', NULL, 'tunai', NULL);
 
 -- ----------------------------
 -- Table structure for user_menu
@@ -499,11 +514,11 @@ INSERT INTO `transaksi` VALUES ('1179', '31749892', '2021-10-12 11:39:40', NULL,
 DROP TABLE IF EXISTS `user_menu`;
 CREATE TABLE `user_menu`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `url` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `title` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `url` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `is_active` int(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_menu
@@ -522,10 +537,10 @@ DROP TABLE IF EXISTS `verification_trx`;
 CREATE TABLE `verification_trx`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
-  `jenis_barang` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
-  `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `jenis_barang` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `keterangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of verification_trx
