@@ -105,6 +105,8 @@ $tgl2 = $hasil['Tgl_Ambil'];
           echo $hasil['Reparasi'];
         } elseif($hasil['Id_Laundry'] == 5) {
           echo $hasil['Recolour'];
+        } else {
+          echo "-";
         } 
           ?></td>
         
