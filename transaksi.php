@@ -40,7 +40,7 @@ if(isset($_SESSION['id'])){
       <?php
         include "./include/koneksi.php";
         $i = 0 + 1;
-        $sql = mysqli_query($conn, "SELECT transaksi.No_Order, transaksi.Tgl_Terima, pelanggan.Nama, transaksi.Tgl_Ambil, transaksi.total_berat, transaksi.diskon, transaksi.Total_Bayar FROM transaksi left join pelanggan ON transaksi.No_Identitas = pelanggan.No_Identitas ORDER BY transaksi.No_Order DESC");
+        $sql = mysqli_query($conn, "SELECT transaksi.No_Order, transaksi.Tgl_Terima, pelanggan.Nama, transaksi.Tgl_Ambil, transaksi.total_berat, transaksi.diskon, transaksi.Total_Bayar, transaksi.status FROM transaksi left join pelanggan ON transaksi.No_Identitas = pelanggan.No_Identitas ORDER BY transaksi.No_Order DESC");
         while ($hasil = mysqli_fetch_array($sql)) {
      ?>
      <?php if ($hasil['status'] == "baru"){ ?>
