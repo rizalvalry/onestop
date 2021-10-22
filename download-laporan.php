@@ -90,7 +90,7 @@ $tgl2 = $hasil['Tgl_Ambil'];
       <?php
         
         $i = 1;
-        $sql = mysqli_query($conn, "SELECT Jenis_Pakaian, Jumlah_Pakaian, detail_transaksi.Id_Laundry, laundry.Jenis_Laundry, laundry.Harga FROM (detail_transaksi join pakaian ON detail_transaksi.Id_Pakaian = pakaian.Id_Pakaian join laundry ON detail_transaksi.Id_Laundry = laundry.Id_Laundry) WHERE No_Order = '$No_Order'");
+        $sql = mysqli_query($conn, "SELECT Jenis_Pakaian, Jumlah_Pakaian, detail_transaksi.Id_Laundry, laundry.Jenis_Laundry, pakaian.Dry_Clean, pakaian.Reparasi, pakaian.Recolour FROM (detail_transaksi join pakaian ON detail_transaksi.Id_Pakaian = pakaian.Id_Pakaian join laundry ON detail_transaksi.Id_Laundry = laundry.Id_Laundry) WHERE No_Order = '$No_Order'");
         while ($hasil = mysqli_fetch_array($sql)) {
      ?>
       <tr class="putus">
@@ -98,7 +98,16 @@ $tgl2 = $hasil['Tgl_Ambil'];
         <td class="putus"><?php echo $hasil['Jenis_Pakaian']; ?></td>
         <td class="putus"><?php echo $hasil['Jenis_Laundry']; ?></td>
         <td class="putus"><?php echo $hasil['Jumlah_Pakaian']; ?></td>
-        <td class="putus"><?php echo $hasil['Harga']; ?></td>
+        <td class="putus"><?php 
+        if($hasil['Id_Laundry'] == 3) {
+          echo $hasil['Dry_Clean']; 
+        } elseif($hasil['Id_Laundry'] == 4) {
+          echo $hasil['Reparasi'];
+        } elseif($hasil['Id_Laundry'] == 5) {
+          echo $hasil['Recolour'];
+        } 
+          ?></td>
+        
       </tr>
       <?php
       $i++;
