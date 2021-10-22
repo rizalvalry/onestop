@@ -128,9 +128,9 @@ $tgl2 = $hasil['Tgl_Ambil'];
             
               <?php
               if($hasil['dp'] != 0) {
-                echo "<small><div class='billed'><span class='font-weight-bold'>LUNAS (Rp):   ".$hasil['Total_Bayar']."  </span></div></small>";
-              } else {
                 echo "<small><div class='billed'><span class='font-weight-bold'>DP (Rp):   ".$hasil['dp']."  </span></div></small>";
+              } else {
+                echo "<small><div class='billed'><span class='font-weight-bold'>LUNAS (Rp):   ".$hasil['Total_Bayar']."  </span></div></small>";
               }
               ?>
 
