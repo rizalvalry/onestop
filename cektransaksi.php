@@ -76,15 +76,15 @@ if(isset($_SESSION['id'])){
                 </div>
                 <div class="form-group">
                   <label>DP</label>
-                  <input type="text"  class="form-control" name="dp" value="<?php echo $hasil['dp']; ?>" readonly>
+                  <input type="text"  class="form-control" name="dp" value="<?php echo rupiah($hasil['dp']); ?>" readonly>
                 </div>
                 <div class="form-group">
                   <label>Sisa yang harus dibayar</label>
-                  <input type="text"  class="form-control" name="sisa_bayar" value="<?php echo $hasil['sisa_bayar']; ?>" readonly>
+                  <input type="text"  class="form-control" name="sisa_bayar" value="<?php echo rupiah($hasil['sisa_bayar']); ?>" readonly>
                 </div>
                 <div class="form-group">
                   <label>Total Bayar</label>
-                  <input type="text"  class="form-control" name="total_bayar" value="<?php echo $hasil['Total_Bayar']; ?>" readonly>
+                  <input type="text"  class="form-control" name="total_bayar" value="<?php echo rupiah($hasil['Total_Bayar']); ?>" readonly>
                 </div>
                 <input type="hidden" class="form-control" name="tanggal" value="<?php $tgl=date('Y-m-d'); echo $tgl; ?>">
                 <?php

@@ -8,6 +8,14 @@ $sql = mysqli_query($conn, "SELECT * FROM profil");
 $profil = mysqli_fetch_array($sql);
 session_start();
 $id_session = $_SESSION['id'];
+
+
+function rupiah($angka){
+	
+	$hasil_rupiah = number_format($angka,2,',','.');
+	return $hasil_rupiah;
+ 
+}
 ?>
 
 <!DOCTYPE html>
@@ -100,11 +108,11 @@ $tgl2 = $hasil['Tgl_Ambil'];
         <td class="putus"><?php echo $hasil['Jumlah_Pakaian']; ?></td>
         <td class="putus"><?php 
         if($hasil['Id_Laundry'] == 3) {
-          echo $hasil['Dry_Clean']; 
+          echo rupiah($hasil['Dry_Clean']); 
         } elseif($hasil['Id_Laundry'] == 4) {
-          echo $hasil['Reparasi'];
+          echo rupiah($hasil['Reparasi']);
         } elseif($hasil['Id_Laundry'] == 5) {
-          echo $hasil['Recolour'];
+          echo rupiah($hasil['Recolour']);
         } else {
           echo "-";
         } 
@@ -130,14 +138,14 @@ $tgl2 = $hasil['Tgl_Ambil'];
             
               <?php
               if($hasil['dp'] != 0) {
-                echo "<small><div class='billed'><span class='font-weight-bold'>DP (Rp):   ".$hasil['dp']."  </span></div></small>";
+                echo "<small><div class='billed'><span class='font-weight-bold'>DP (Rp):   ".rupiah($hasil['dp'])."  </span></div></small>";
               } else {
-                echo "<small><div class='billed'><span class='font-weight-bold'>LUNAS (Rp):   ".$hasil['Total_Bayar']."  </span></div></small>";
+                echo "<small><div class='billed'><span class='font-weight-bold'>LUNAS (Rp):   ".rupiah($hasil['Total_Bayar'])."  </span></div></small>";
               }
               ?>
 
-              <small><div class="billed"><span class="font-weight-bold">Total Bayar (Rp): <?php echo $hasil['Total_Bayar']; ?></span></div></small>
-              <small><div class="billed"><span class="font-weight-bold">Sisa Bayar (Rp): <?php echo $hasil['sisa_bayar']; ?></span></div></small>
+              <small><div class="billed"><span class="font-weight-bold">Total Bayar (Rp): <?php echo rupiah($hasil['Total_Bayar']); ?></span></div></small>
+              <small><div class="billed"><span class="font-weight-bold">Sisa Bayar (Rp): <?php echo rupiah($hasil['sisa_bayar']); ?></span></div></small>
               ================================
               <small><div class="billed"><span class="font-weight-bold">Keterangan : <?php echo $hasil['keterangan']; ?></span></div></small>
               <small><div class="billed"><span class="font-weight-bold">Instagram : onestoplaundryandrepair / kicksandbags.spa</span></div></small>
